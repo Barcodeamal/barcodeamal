@@ -1,2 +1,2 @@
-# barcodeamal
+# Barcodeamal
 Barcodeamal Website
