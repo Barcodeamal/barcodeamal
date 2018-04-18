@@ -215,8 +215,9 @@ section.info h3 {
     font-size: 6vw;
   }
   section.info .flex {
-    font-size: 100%;
+    font-size: 90%;
     flex-direction: column;
+    margin: 5px 0;
   }
   .flex > * {
     flex: 1;
