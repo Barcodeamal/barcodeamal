@@ -1,0 +1,27 @@
+<article>
+  <h1>Platform kotak amal digital</h1>
+  <p>
+    Dengan platform ini kamu dapat melakukan donasi 
+    dengan cara melakukan scan barcode yang sudah terdaftar
+    sebagai sebaran barcode menggunakan smartphone.
+  </p>
+  <div class="flex" style="margin: 40px 0">    
+    <div class="poster">
+      <h3>Digital Poster</h3>
+      <div ng-repeat="item in list">
+        <a href="/{{item.id}}" ng-bind="item.title"></a>
+      </div>
+    </div>
+    <div class="socmed">
+      <h3>Social Media</h3>
+      <div ng-repeat="item in list">
+        <a href="/{{item.id}}" ng-bind="item.title"></a>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 20px 0">
+      <a target="_blank" href="https://play.google.com/store/apps/details?id=id.barcodeamal.android&utm_source=WEBSITE&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+        <img class="google-play" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/badge_new.png"/>
+      </a>
+  </div>
+</article> 

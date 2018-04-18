@@ -7,23 +7,23 @@
   <meta property="og:title" content="Barcodeamal - Platform kotak amal digital" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://barcodeamal.id" />
-  <meta property="og:image" content="https://barcodeamal.id/barcodeamal.jpg" />
+  <meta property="og:image" content="https://barcodeamal.id/images/barcodeamal.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/x-icon" href="https://barcodeamal.id/favicon.ico" id="favicon">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-  <section class="hero">
+  <section class="hero" ng-style="{'background-image':'url({{page.media}})'}">
     <article>
         <a class="logo" href="/">
-          <img src="/barcodeamal.png"/>
+          <img src="/images/barcodeamal.png"/>
           <h1 class="title"><span>Barcode</span>amal</h1>
         </a>
     </article>
   </section>
-  <section class="info" ng-include="getCurrentPage()">
+  <section class="info" ng-controller="campaign" ng-include="getCurrentPage()" >
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="/js/barcodeamal.js"></script>

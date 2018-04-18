@@ -5,4 +5,43 @@
     dengan cara melakukan scan barcode yang sudah terdaftar
     sebagai sebaran barcode menggunakan smartphone.
   </p>
+  <div class="flex" style="margin: 40px 0;">    
+    
+    <div class="link">
+      <h3>Tentang Barcodeamal</h3>
+      <div><a href="/page/story">Cerita Pendek</a></div>
+      <div><a href="/page/how">Pelajari cara kerjanya</a></div>
+      <div><a href="/page/tos">Ketentuan layanan &amp; kebijakan privasi</a></div>
+      <div><a href="/page/register-barcode">Mendaftar menjadi sebaran barcode</a></div>
+    </div>
+
+    <div class="poster">
+      <h3>Sebaran Barcode</h3>
+      <div ng-repeat="item in list"><a href="/{{item.id}}" ng-bind="item.title"></a></div>
+    </div>
+    
+    <!-- <div class="socmed">
+      <h3>Media Sosial</h3>
+      <div>
+        <a target="_blank" href="https://www.kitabisa.com/barcodeamal">Kitabisa</a>
+      </div>
+      <div>
+        <a target="_blank" href="https://www.facebook.com/barcodeamal">Facebook</a>
+      </div>
+      <div>
+        <a target="_blank" href="https://www.twitter.com/barcodeamal">Twitter</a>
+      </div>
+      <div>
+        <a target="_blank" href="https://www.instagram.com/barcodeamal">Instagram</a>
+      </div>
+    </div> -->
+
+    
+
+  </div>
+  <div style="margin: 20px 0">
+      <a target="_blank" href="https://play.google.com/store/apps/details?id=id.barcodeamal.android&utm_source=WEBSITE&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+        <img class="google-play" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/badge_new.png"/>
+      </a>
+  </div>
 </article> 
