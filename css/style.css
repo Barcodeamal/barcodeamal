@@ -178,3 +178,49 @@ section.info h3 {
 .flex > *:last-child {
   text-align: right;
 } */
+
+
+@media only screen and (max-width: 960px) {    
+  .hero{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 40%;
+  }
+  section.info{
+    flex: .6;
+  }
+  section.info p {
+    font-size: 2vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {    
+  .hero{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+  }
+  section.info{
+    margin-top: 80vh;
+    flex: 1;
+  }
+  section.info h1 {
+    font-size: 15vw;
+  }
+  section.info p {
+    font-size: 6vw;
+  }
+  section.info .flex {
+    font-size: 100%;
+    flex-direction: column;
+  }
+  .flex > * {
+    flex: 1;
+    padding: 0;
+  }
+
+}
