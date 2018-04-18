@@ -46,18 +46,17 @@ angular
   .controller('campaign', function($scope, $http, $document) {
     $scope.info = {}
     $scope.init = function(){
+      var img = $document.find('section')[0];
       var path = window.location.pathname.substring(1);
       if(path.indexOf('/') === -1 && path.length == 6){
         $scope.api('/campaign/'+path, function(data){
-          console.log(data);
           $scope.page.template = "info";
-          var img = $document.find('section')[0];
-          console.log(img, data.media);
           img.style.backgroundImage = "url("+data.media.replace("c_scale,w_512/","")+")";
           $scope.info = data;
         })
       }else if(path.indexOf('page/') === 0){
         $scope.page.template = path.split("/")[1];
+        img.style.backgroundImage = "url("+$scope.page.media+")";
       }
     }
 
