@@ -1,27 +1,17 @@
-<article>
-  <h1>Platform kotak amal digital</h1>
-  <p>
-    Dengan platform ini kamu dapat melakukan donasi 
-    dengan cara melakukan scan barcode yang sudah terdaftar
-    sebagai sebaran barcode menggunakan smartphone.
-  </p>
-  <div class="flex" style="margin: 40px 0">    
-    <div class="poster">
-      <h3>Digital Poster</h3>
-      <div ng-repeat="item in list">
-        <a href="/{{item.id}}" ng-bind="item.title"></a>
-      </div>
-    </div>
-    <div class="socmed">
-      <h3>Social Media</h3>
-      <div ng-repeat="item in list">
-        <a href="/{{item.id}}" ng-bind="item.title"></a>
-      </div>
-    </div>
+<h1 ng-bind="info.title"></h1>
+<div style="margin-bottom: 20px">
+  <small ng-bind="info.address"></small>
+</div>
+<p ng-bind="info.description"></p>
+<div class="flex">
+  <div class="qr">
+    <a target="_blank" href="https://ce83a94cc.cloudimg.io/cdn/n/n/barcodeamal-api.herokuapp.com/cdn/q/{{info.id}}.png" alt="{{info.id}}" download="{{info.id}}.png">
+      <img ng-src="https://ce83a94cc.cloudimg.io/width/250/n/barcodeamal-api.herokuapp.com/cdn/q/{{info.id}}.png"/>
+    </a>
   </div>
-  <div style="margin: 20px 0">
-      <a target="_blank" href="https://play.google.com/store/apps/details?id=id.barcodeamal.android&utm_source=WEBSITE&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-        <img class="google-play" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/badge_new.png"/>
-      </a>
+  <div ng-show="info.balance > 0">
+    <small style="display: inline-block; margin-bottom: 10px; text-transform: uppercase">Jumlah donasi terkumpul</small>
+    <h2>Rp. <span ng-bind="info.balance"></span></h2>
   </div>
-</article> 
+</div>
+  

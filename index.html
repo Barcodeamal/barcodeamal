@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Barcodeamal - Platform kotak amal digital</title>
-  <meta name="description" content="Barcodeamal - Platform kotak amal digital" />
   <meta property="og:title" content="Barcodeamal - Platform kotak amal digital" />
+  <meta name="description" content="Yuk mulai beramal secara digital melalui platform kotak amal digital dari Barcodeamal" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://barcodeamal.id" />
   <meta property="og:image" content="https://barcodeamal.id/images/barcodeamal.jpg" />
@@ -23,7 +23,9 @@
         </a>
     </article>
   </section>
-  <section class="info" ng-controller="campaign" ng-include="getCurrentPage()" >
+  <section class="info" ng-controller="campaign">
+    <article ng-include="getCurrentPage()" ></article>
+    <article ng-include="'/footer.html'"></article>
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="/js/barcodeamal.js"></script>
