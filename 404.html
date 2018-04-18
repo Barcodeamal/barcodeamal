@@ -27,6 +27,15 @@
     <article ng-include="getCurrentPage()" ></article>
     <article ng-include="'/footer.html'"></article>
   </section>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102073540-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102073540-1');
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="/js/barcodeamal.js?v=1.0.4"></script>
 </body>
