@@ -75,13 +75,17 @@ h1,h2,h3,h4,h5,p{
 section.info{
   z-index: 999;
   background-color: #f2f5f0;
+  display: flex;
+  flex-direction: column;
 }
 section>article{
   padding: 40px;
+  flex: 1;
 }
 section.info>article:last-child{
   padding-bottom: 80px;
   background-color: #e4e6e2;
+  flex: 0;
 }
 section.info h1{
   font-size: 6vw;
@@ -156,12 +160,13 @@ section.info h2 {
 }
 
 .qr{
-  flex: .5;
+  flex: .35;
 }
 .qr img{
+  width: 100%;
   box-shadow: 5px 5px 10px #c5c7c3;
 }
-@media only screen and (max-width: 960px) {    
+@media only screen and (max-width: 1000px) {    
   .hero{
     position: fixed;
     left: 0;
@@ -172,8 +177,15 @@ section.info h2 {
   section.info{
     flex: .6;
   }
+  section.info h2 {
+    font-size: 6vw;
+  }
   section.info p {
     font-size: 2vw;
+  }
+  .qr{
+    flex: .35;
+    margin-right: 20px;
   }
 }
 .flex.link{
@@ -222,13 +234,16 @@ section.info h2 {
   .flex.link{
     align-items: flex-start;
   }
+  .keep2{
+    flex-direction: row;
+  }
   .qr{
-    flex: 1;
+    flex: .5;
     margin-bottom: 20px;
   }
   .qr img{
     box-shadow: none;
-    width: 100%;
+    /* width: 100%; */
   }
 
 }
