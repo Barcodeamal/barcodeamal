@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="barcodeamal" ng-controller="barcodeamal">
+
+<head>
+  <meta charset="utf-8">
+  <title>Barcodeamal - Platform kotak amal digital</title>
+  <meta property="og:title" content="Yuk mulai menggunakan platform kotak amal digital dari Barcodeamal" />
+  <meta name="description" content="Mudahnya menggunakan platform ini karena kamu cukup menggunakan barcode yang ditempelkan pada kotak amal, mading, brosur, poster, spanduk, surat edaran dan sebagainya sehingga orang lain dapat dengan mudah memberikan donasi dari kegiatan kamu."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://barcodeamal.id/page/register" />
+  <meta property="og:image" content="https://barcodeamal.id/images/barcodeamal.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="https://barcodeamal.id/favicon.ico" id="favicon">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  <link href="/css/style.css?v=1.0.51" rel="stylesheet">
+  <meta name="google-signin-client_id" content="219543823322-o50u5knat7k98ks2r2vfg3k6iiau2rgq.apps.googleusercontent.com">
+</head>
+
+<body class="regform" ng-controller="register">
+  <div class="form">
+    <div ng-show="step.id==1">
+      <div class="hide" style="margin-bottom: 50px;">Mendaftarkan Sebaran Barcode dengan akun berikut</div>
+      <div id="id" style="display: none;"></div>
+      <h2 id="name" style="line-height: 1"></h2>
+      <small id="email"></small>
+      <div class="flex" style="justify-content: center">
+        <button id="next" class="hide" style="margin-top: 50px;" ng-click="step.one()">Lanjutkan</button>
+      </div>
+    </div>
+    <div ng-show="step.id==2">
+      <input type="text" ng-model="sebaran.title" placeholder="Nama objek atau kegiatan" />
+      <textarea ng-model="sebaran.description" placeholder="Isi dengan deskripsi singkat dan jelas tentang objek atau kegiatan yang diselenggarakan"></textarea>
+      <div class="flex" style="justify-content: center">
+        <button id="next" class="hide" style="margin-top: 50px;" ng-disabled="(sebaran.title.length <= 15) && (sebaran.description.length <= 25)"
+          ng-click="step.next()">Lanjutkan</button>
+      </div>
+    </div>
+    <div ng-show="step.id==3">
+      <div id="media" class="img-placeholder" ng-click="step.upload()" style="background-image: url({{sebaran.media}})">
+        <div class="camera">
+          <img src="/images/camera.png" />
+        </div>
+      </div>
+      <div class="flex" style="justify-content: center">
+        <button id="next" style="margin-top: 50px;" ng-disabled="sebaran.media.length == 0" ng-click="step.next()">Lanjutkan</button>
+      </div>
+    </div>
+    <div ng-show="step.id==4">
+      <div class="map" style="margin-bottom: 20px">
+        <div id="map"></div>
+        <div class="pointer">
+          <img src="/images/map-pointer.png" />
+        </div>
+      </div>
+      <div style="text-align: left;height: 60px;    font-size: .7em;">
+        <small ng-bind="sebaran.latlng" style="font-size: .75em"></small>
+        <div ng-bind="sebaran.address"></div>
+      </div>
+      <div class="flex" style="justify-content: center">
+        <button id="next" style="margin-top: 20px;" ng-disabled="sebaran.address.D == 0" ng-click="step.next()">Lanjutkan</button>
+      </div>
+    </div>
+    <div ng-show="step.id==5" class="confirm">
+      <h3 style="line-height: 1.5">Data Pendaftaran Sebaran Barcode</h3>
+      <div></div>
+      <small>
+        <b>Nama Penanggung Jawab</b>
+        <span ng-bind="sebaran.account.fullname"></span>
+      </small>
+      <small>
+        <b>Alamat Email</b>
+        <span ng-bind="sebaran.account.email"></span>
+      </small>
+      <small>
+        <b>Nama Objek/Kegiatan</b>
+        <span ng-bind="sebaran.title"></span>
+      </small>
+      <small>
+        <b>Uraian singkat</b>
+        <span ng-bind="sebaran.description"></span>
+      </small>
+      <small>
+        <b>Alamat</b>
+        <span ng-bind="sebaran.address"></span>
+      </small>
+      <small>
+        <b>Geo Location</b>
+        <span ng-bind="sebaran.latlng"></span>
+      </small>
+      <small style="margin: 40px 0; font-size: .6em">Dengan mengklik tombol Submit, saya menyetujui segala ketentuan yang berlaku atas layanan pada Barcodeamal</small>
+      <div class="flex" style="justify-content: center">
+        <button id="next" style="" ng-disabled="sebaran.confirm" ng-click="step.send()">Submit</button>
+      </div>
+    </div>
+    <div ng-show="step.id==6">
+      <h2 style="line-height: 1">Terima kasih atas partisipasi anda</h2>
+      <div>Request anda akan kami verifikasi terlebih dahulu sebelum kami publikasikan. Informasi hasil verifikasi akan kami kabarkan melalui email <span ng-bind="sebaran.email"></span></div>
+      <div class="flex" style="justify-content: center">
+          <button id="next" style="margin-top: 50px" ng-click="step.done()">Close</button>
+        </div>
+    </div>
+    <div ng-show="step.id==7">
+        <h2 style="line-height: 1">Ooopps!!</h2>
+        <div>Mohon maaf, sepertinya telah terjadi kesalahan  <span ng-bind="step.error"></span></div>
+        <div class="flex" style="justify-content: center">
+            <button id="next" style="margin-top: 50px" ng-click="step.done()">Close</button>
+          </div>
+      </div>
+    <div id="google-signin" class="flex" style="justify-content: center; align-items: center;flex-direction: column;">
+      <div style="text-align:center; margin-bottom: 40px; width: 400px">
+        Gunakan akun Google untuk mendaftarkan
+        <b>Sebaran Barcode</b>
+      </div>
+      <div id="gsign"></div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="/js/barcodeamal.js?v=1.0.5"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSHvIRATbfRn-Ebya4Zs2h4CHCC52xVvE&callback=initMap" async
+    defer></script>
+  <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102073540-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102073540-1');
+  </script>
+</body>
+
+</html>

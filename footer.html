@@ -8,7 +8,7 @@
       <a href="/page/how">Pelajari cara kerjanya</a>
     </div>
     <div>
-      <a href="/page/tos">Ketentuan layanan &amp; kebijakan privasi</a>
+      <a href="/page/tos">Kebijakan privasi  &amp; ketentuan layanan</a>
     </div>
     <div>
       <a href="/page/register">Mendaftar menjadi sebaran barcode</a>
@@ -17,11 +17,15 @@
 
   <div class="poster">
     <h3>Sebaran Barcode</h3>
-    <div ng-repeat="item in list">
+    <div ng-show="list.length == 0">
+      <img src="/images/spinner.svg" class="loader"/>
+    </div>
+    <div ng-show="list.length > 0" ng-repeat="item in list">
       <a href="/{{item.id}}" ng-bind="item.title"></a>
     </div>
   </div>
 </div>
+
 <div class="flex link">
   <div style="margin: 20px 0">
     <a target="_blank" href="https://play.google.com/store/apps/details?id=id.barcodeamal.android&utm_source=WEBSITE&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
@@ -31,27 +35,33 @@
   </div>
   <div class="socmed">
     <div>
-      <a target="_blank" href="https://www.kitabisa.com/barcodeamal">
+      <a target="_blank" href="https://www.kitabisa.com/barcodeamal" title="Campaign Barcodeamal di Kitabisa.com">
         <img src="/images/kitabisa.png" />
       </a>
     </div>
     <div>
-      <a target="_blank" href="https://www.facebook.com/barcodeamal">
+      <a target="_blank" href="https://www.facebook.com/barcodeamal" title="Barcodeamal official Facebook page">
         <img src="/images/facebook.png" />
       </a>
     </div>
     <div>
-      <a target="_blank" href="https://www.twitter.com/barcodeamal">
+      <a target="_blank" href="https://www.twitter.com/barcodeamal" title="Barcodeamal official Twitter">
         <img src="/images/twitter.png" />
       </a>
     </div>
     <div>
-      <a target="_blank" href="https://www.instagram.com/barcodeamal">
+      <a target="_blank" href="https://www.instagram.com/barcodeamal" title="Barcodeamal Instagram">
         <img src="/images/instagram.png" />
+      </a>
+    </div>
+    <div>
+      <a href="mailto:kami@barcodeamal.id" title="Kirim pertanyaan melalui email">
+        <small><b>kami@barcodeamal.id</b></small>
       </a>
     </div>
   </div>
 </div>
+
 <div class="credit">
   <h5 style="line-height: 1">Website Versin : 1.0.5</h5>
   <h4>Credits</h4>

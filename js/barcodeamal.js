@@ -12,6 +12,11 @@ angular
       'https://images.unsplash.com/photo-1490424660416-359912d314b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=75849dd2a245dded86c3bfdfdd69d28c&auto=format&fit=crop&w=1500&q=80',
 
     ]
+    $scope.register = false;
+    $scope.switchRegister = function() {
+      
+      $scope.register = !$scope.register;
+    }
     $scope.page = {
       template: 'main',
       media: bg[Math.round(Math.random() * 1000) % bg.length]
@@ -39,6 +44,18 @@ angular
           }
         })
     }
+    $scope.post = function(endpoint, data, callback) {
+      $http
+        .post(API_BASE_URL + endpoint, data)
+        .then(function(resp){return resp.data})
+        .then(function(resp){
+          if(resp.status){
+            callback(resp)
+          }else{
+            console.log("ERROR: ", resp.message);
+          }
+        })
+    }
     $scope.api('/campaigns', function(data){
       $scope.list = data;
     })
@@ -61,5 +78,130 @@ angular
     }
 
     $scope.init();
-    console.log($document.find('section'))
   })
+  .controller('register', function($scope, $http, $document) {
+    $scope.account = {
+      id: null,
+      fullname: null,
+      email: null
+    }
+    $scope.sebaran = {
+      confirm: false,
+      title: "",
+      description: "",
+      media: "",
+      latlng: "",
+      address: "",
+      account: {
+        uid: null,
+        fullname: null,
+        email: null
+      }
+    }
+    $scope.mapUpdate = function(latlng){
+      $scope.sebaran.latlng = latlng;
+    }
+    $scope.geoUpdate = function(address){
+      $scope.sebaran.address = address.formatted_address;
+    }
+    $scope.step = {
+      id: 1,
+      error: "",
+      one: function(){
+        $scope.step.id++;
+        $scope.sebaran.account.uid = document.getElementById("id").innerText;
+        $scope.sebaran.account.fullname = document.getElementById("name").innerText;
+        $scope.sebaran.account.email = document.getElementById("email").innerText;
+      },
+      two: function(){
+        $scope.step.id++;
+      },
+      three: function(){
+        $scope.step.id++;
+      },
+      four: function(){
+        $scope.step.id++;
+      },
+      next: function(){
+        $scope.step.id++;
+      },
+      send: function(){
+        $scope.step.next();
+        $scope.post('/submission', $scope.sebaran, function(resp){
+          if(resp.status !== true){
+            $scope.error = resp.message;
+          }
+        });
+      },
+      done: function(){
+        $scope.register = false;
+      },
+      upload: function(){
+        cloudinary.openUploadWidget({ 
+          cloud_name: 'dwiz5w6mk', 
+          upload_preset: 'zx3qmvaz'
+        }, function(error, result) { 
+          if(error === null) {
+            $scope.sebaran.media = result[0].url;
+            var img = document.getElementById("media");
+            img.style.backgroundImage = "url("+result[0].url+")";
+          } 
+        });
+      }
+    }
+  })
+
+  function onSuccess(googleUser) {
+    document.getElementById("id").innerText = googleUser.getBasicProfile().getId();
+    document.getElementById("name").innerText = googleUser.getBasicProfile().getName();
+    document.getElementById("email").innerText = googleUser.getBasicProfile().getEmail();
+    document.getElementById("google-signin").style.display = "none";
+    var hidden = document.querySelectorAll('.hide');
+    for(i=0;i<hidden.length;i++){
+      hidden[i].className = 'show'
+    }
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      document.getElementById('google-signin').remove()
+    });
+  }
+  function onFailure(error) {
+    console.log(error);
+  }
+  function renderButton() {
+    gapi.signin2.render('gsign', {
+      'scope': 'profile email',
+      'width': 240,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark',
+      'onsuccess': onSuccess,
+      'onfailure': onFailure
+    });
+  }
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -6.2349359, lng: 106.7529515},
+      zoom: 8
+    });
+
+    map.addListener('dragend', function() {
+      window.setTimeout(function() {
+        var scope = angular.element(document.body).scope();
+        scope.$apply(function () {
+          scope.mapUpdate(map.getCenter().toUrlValue(12));
+        });
+        geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+          if (status == 'OK') {
+            scope.$apply(function () {
+              scope.geoUpdate(results[0] || "");
+            });
+          } else {
+            console.log('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }, 1000);
+    });
+  }
