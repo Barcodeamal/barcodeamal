@@ -15,9 +15,9 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
   <link href="/css/style.css?v=1.0.51" rel="stylesheet">
-  <meta name="google-signin-client_id_" content="219543823322-o50u5knat7k98ks2r2vfg3k6iiau2rgq.apps.googleusercontent.com">
-  <meta name="google-signin-client_id" content="219543823322-eajooc85hfcf8r0mdkfdvgffmlom6vel.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="219543823322-o50u5knat7k98ks2r2vfg3k6iiau2rgq.apps.googleusercontent.com">
 </head>
+
 <body class="regform" ng-controller="register">
   <div class="form">
     <div ng-show="step.id==1">
@@ -48,18 +48,20 @@
       </div>
     </div>
     <div ng-show="step.id==4">
-      <div class="map" style="margin-bottom: 20px">
-        <div id="map"></div>
-        <div class="pointer">
-          <img src="/images/map-pointer.png" />
+      <div class="map-container">
+        <div class="map" style="margin-bottom: 20px">
+          <div id="map"></div>
+          <div class="pointer">
+            <img src="/images/map-pointer.png" />
+          </div>
         </div>
-      </div>
-      <div style="text-align: left;height: 60px;    font-size: .7em;">
-        <small ng-bind="sebaran.latlng" style="font-size: .75em"></small>
-        <div ng-bind="sebaran.address"></div>
-      </div>
-      <div class="flex" style="justify-content: center">
-        <button id="next" style="margin-top: 20px;" ng-disabled="sebaran.address === ''" ng-click="step.next()">Lanjutkan</button>
+        <div style="text-align: left;height: 60px; font-size: .7em;">
+          <small ng-bind="sebaran.latlng" style="font-size: .75em"></small>
+          <div ng-bind="sebaran.address"></div>
+        </div>
+        <div class="flex" style="justify-content: center">
+          <button id="next" style="margin-top: 20px;" ng-disabled="sebaran.address === ''" ng-click="step.next()">Lanjutkan</button>
+        </div>
       </div>
     </div>
     <div ng-show="step.id==5" class="confirm">
@@ -96,20 +98,32 @@
     </div>
     <div ng-show="step.id==6">
       <h2 style="line-height: 1">Terima kasih atas partisipasi anda</h2>
-      <div>Request anda akan kami verifikasi terlebih dahulu sebelum kami publikasikan. Informasi hasil verifikasi akan kami kabarkan melalui email <span ng-bind="sebaran.email"></span></div>
-      <div class="flex" style="justify-content: center">
-          <button id="next" style="margin-top: 50px" ng-click="step.done()">Close</button>
-        </div>
+      <div>Request anda akan kami verifikasi terlebih dahulu sebelum kami publikasikan. Informasi hasil verifikasi akan kami kabarkan
+        melalui email
+        <span ng-bind="sebaran.email"></span>
+      </div>
+
+      <div class="mh flex" style="justify-content: center;align-items: center;">
+        <button style="margin: 50px 0;" ng-click="step.done()">Close</button>
+      </div>
+      <div class="ms flex" style="justify-content: center;align-items: center;">
+        <a class="button" style="margin: 50px 0;" href="/page/register">Close</a>
+      </div>
     </div>
     <div ng-show="step.id==7">
-        <h2 style="line-height: 1">Ooopps!!</h2>
-        <div>Mohon maaf, sepertinya telah terjadi kesalahan  <span ng-bind="step.error"></span></div>
-        <div class="flex" style="justify-content: center">
-            <button id="next" style="margin-top: 50px" ng-click="step.done()">Close</button>
-          </div>
+      <h2 style="line-height: 1">Ooopps!!</h2>
+      <div>Mohon maaf, sepertinya telah terjadi kesalahan
+        <span ng-bind="step.error"></span>
       </div>
+      <div class="mh flex" style="justify-content: center;align-items: center;">
+        <button style="margin: 50px 0;" ng-click="step.done()">Close</button>
+      </div>
+      <div class="ms flex" style="justify-content: center;align-items: center;">
+        <a class="button" style="margin: 50px 0;" href="/page/register">Close</a>
+      </div>
+    </div>
     <div id="google-signin" class="flex" style="justify-content: center; align-items: center;flex-direction: column;">
-      <div style="text-align:center; margin-bottom: 40px; width: 400px">
+      <div style="text-align:center; margin-bottom: 40px;">
         Gunakan akun Google untuk mendaftarkan
         <b>Sebaran Barcode</b>
       </div>
@@ -125,7 +139,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102073540-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-102073540-1');

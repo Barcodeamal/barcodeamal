@@ -185,7 +185,7 @@ angular
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: -6.2349359, lng: 106.7529515},
-      zoom: 8
+      zoom: 13
     });
 
     map.addListener('dragend', function() {
