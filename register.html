@@ -15,9 +15,9 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
   <link href="/css/style.css?v=1.0.51" rel="stylesheet">
-  <meta name="google-signin-client_id" content="219543823322-o50u5knat7k98ks2r2vfg3k6iiau2rgq.apps.googleusercontent.com">
+  <meta name="google-signin-client_id_" content="219543823322-o50u5knat7k98ks2r2vfg3k6iiau2rgq.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="219543823322-eajooc85hfcf8r0mdkfdvgffmlom6vel.apps.googleusercontent.com">
 </head>
-
 <body class="regform" ng-controller="register">
   <div class="form">
     <div ng-show="step.id==1">
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="flex" style="justify-content: center">
-        <button id="next" style="margin-top: 50px;" ng-disabled="sebaran.media.length == 0" ng-click="step.next()">Lanjutkan</button>
+        <button id="next" style="margin-top: 50px;" ng-disabled="sebaran.media === ''" ng-click="step.next()">Lanjutkan</button>
       </div>
     </div>
     <div ng-show="step.id==4">
@@ -59,7 +59,7 @@
         <div ng-bind="sebaran.address"></div>
       </div>
       <div class="flex" style="justify-content: center">
-        <button id="next" style="margin-top: 20px;" ng-disabled="sebaran.address.D == 0" ng-click="step.next()">Lanjutkan</button>
+        <button id="next" style="margin-top: 20px;" ng-disabled="sebaran.address === ''" ng-click="step.next()">Lanjutkan</button>
       </div>
     </div>
     <div ng-show="step.id==5" class="confirm">

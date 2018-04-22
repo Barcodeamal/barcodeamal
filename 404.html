@@ -28,7 +28,10 @@
     <article ng-include="'/footer.html'"></article>
   </section>
   <div class="modal" ng-show="register">
-    <iframe class="content" frameborder="0" src="/register.html"></iframe>
+    <div class="content">
+      <div class="close" ng-click="switchRegister()"><span>&#10006;</span></div>
+      <iframe class="content" frameborder="0" src="/register.html"></iframe>
+    </div>
   </div>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102073540-1"></script>

@@ -142,9 +142,11 @@ angular
           upload_preset: 'zx3qmvaz'
         }, function(error, result) { 
           if(error === null) {
-            $scope.sebaran.media = result[0].url;
             var img = document.getElementById("media");
             img.style.backgroundImage = "url("+result[0].url+")";
+            $scope.sebaran.media = result[0].url;
+            console.log($scope.sebaran);
+            $scope.$apply();
           } 
         });
       }
