@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://barcodeamal-api.herokuapp.com'
+const API_BASE_URL = 'https://api.barcodeamal.id'
 ~
 angular
   .module('barcodeamal', [])
