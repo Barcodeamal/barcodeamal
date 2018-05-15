@@ -133,6 +133,9 @@ section.info h3 {
   color: #000;
   text-transform: uppercase
 }
+section.info h5 {
+  font-size: 18px;
+}
 .flex > * {
   flex: .5;
   padding-right: 30px;
